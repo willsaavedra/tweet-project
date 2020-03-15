@@ -1,0 +1,46 @@
+{
+  "name": "node-express",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "aws-sdk": "^2.416.0",
+    "body-parser": "^1.19.0",
+    "express": "^4.15.4",
+    "express-session": "^1.15.6",
+    "fs": "0.0.1-security",
+    "gelf": "^2.0.1",
+    "mongodb": "^3.3.2",
+    "mongoose": "^5.0.16",
+    "morgan": "^1.9.1",
+    "morgan-body": "^2.4.8",
+    "newrelic": "^6.4.2",
+    "node-uuid": "^1.4.8",
+    "redis": "^2.8.0",
+    "rotating-file-stream": "^2.0.2",
+    "twitter": "^1.7.1",
+    "winston": "^3.2.1"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "markdown-magic": "^0.1.25",
+    "markdown-magic-directory-tree": "^1.2.3",
+    "mocha": "^6.0.2",
+    "nodemon": "^1.17.3"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "test/*",
+      "docs/*"
+    ],
+    "delay": "2500"
+  },
+  "scripts": {
+    "test": "mocha",
+    "start": "nodemon ./bin/server.js",
+    "atualizar-diretorios": "node ./doc-directory-create.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
