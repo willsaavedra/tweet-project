@@ -5,7 +5,11 @@ services:
     container_name: tweet-api
     build: ./
     environment:
-      - WHOLE_BASE=true
+      - NEW_RELIC_LICENSE_KEY=
+      - TWITTER_CONSUMER_KEY=
+      - TWITTER_CONSUMER_SECRET=
+      - TWITTER_ACCESS_TOKEN_KEY=
+      - TWITTER_ACCESS_TOKEN_KEY=
     restart: unless-stopped
     volumes:
       - ./src/var/log:/app/src/var/log/

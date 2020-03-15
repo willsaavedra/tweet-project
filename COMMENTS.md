@@ -22,10 +22,6 @@ Stack utilizada para construção da API
 
   Definido a linguagem, pensei em como iria armazenar esses posts. Já com todo cenário em mente, vi que iria lidar com dados não estruturados. Durante a minha experiência com banco, armazenar tabelas com campos grandes em bancos relacionais sempre deram dor de cabeça na hora da manutenção e performance. Levando em consideração estes pontos, eu resolvi utilizar o MongoDB devido a sua fácil adoção e documentação.
 
-  * Nascendo o primeiro commit
-
-  Utilizando o frame express do nodeJS e o MongoDB para registrar os comentários do desafio. Iniciamos o projeto de forma rápida e simples, ganhando forma de após dia.
-
 ## Definindo estrategia de implementação
 
   * Docker-compose
@@ -65,6 +61,8 @@ src/
 │ ├─┬ tweets/
 │ │ └── index.js
 │ └── index.js
+├─┬ var/
+│ └── log/
 ├── app.js
 └── doc-directory-tree.js
 ```
