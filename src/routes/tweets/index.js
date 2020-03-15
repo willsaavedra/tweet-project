@@ -3,10 +3,7 @@ const router = express.Router();
 const SaveTweetsRepository = require('../../repository/tweets');
 var Twitter = require('twitter');
 var client = new Twitter({
-  consumer_key: '7p62fie1mprPmkdkXp34i2gWJ',
-  consumer_secret: 'JgENau3B49tDEVGu83QK9ZnmbhHdqu15qkcd9AhmRctdMmMYqF',
-  access_token_key: '362833614-UFrE9j3xuMZ2oIe8L4QT0f3BZIGZZH1Gi15e9QJN',
-  access_token_secret: 'qLEUYWMDD2w28i2lrnvX6bmUjhqObJAHDAXEXrGdHf0xy'
+  
 });
 
 // all tweets per #
