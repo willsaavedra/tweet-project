@@ -1,49 +1,127 @@
-# Considerações Gerais
-Você deverá usar este repositório como o repo principal do projeto, i.e., todos os seus commits devem estar registrados aqui, pois queremos ver como você trabalha.
+# Preparando ambiente
 
-Esse problema tem algumas constraints:
+**Para rodar o ambiente é necessario alguns pré-requisitos:**
 
-a) Eu preciso conseguir rodar seu código em um Mac OS X OU no Ubuntu;
+* NodeJS - LTS
+  * https://nodejs.org/en/
+* npm 6.14.2
+  * https://www.npmjs.com/get-npm
 
-b) Devemos ser capazes de executar o seu código em uma VM ou máquina limpa com os seguintes comandos, ou algo similar (faça um INSTALL.md com as instruções):
+* Para instalação local, certifique-se que as portas abaixo estajem liberadas:
 
-git clone seu-repositorio
-cd seu-repositorio
-./configure (ou algo similar)
-make run (ou algo similar)
+* 27017 - MongoDB
+* 9200, 92300 - ElasticSearch
+* 9000, 1514, 12201 - GrayLog
 
-Esses comandos devem ser o suficiente para configurar uma nova VM e rodar o seu programa. Considere que o meu usuário não é root, porém tem permissão de sudo. Considere que tenho instalado no sistema: Java, Python, Ruby ou Go. Qualquer outra dependência que eu precisar você tem que prover.
+# Iniciando o ambiente 
 
-Registre tudo: testes que forem executados, ideias que gostaria de implementar se tivesse tempo (explique como você as resolveria, se houvesse tempo), decisões que forem tomadas e seus porquês, arquiteturas que forem testadas e os motivos de terem sido modificadas ou abandonadas. Crie um arquivo COMMENTS.md ou HISTORY.md no repositório para registrar essas reflexões e decisões.
+**Clonando repositorio**
 
-# O Problema
+```bash
+git clone https://gitlab.cloud4erp.digital/SelecaoGlobocom/Willian-Costa.git
+```
 
-O desafio que você deve resolver é o problema da aplicação de Comentários em versão API (backend) usando a linguagem de programação e ferramentas open source da sua preferência.
+**Iniciando serviços via docker-compose**
 
-A aplicação será uma API REST. Através dela os internautas enviam comentários em texto de uma máteria e acompanham o que outras pessoas estão falando sobre o assunto em destaque.
+```bash
+# Diretorio Git
+cd ./Willian-Costa
+
+# docker compose up mongoDB, Elastic and GrayLog
+docker-compose up -d mongo elasticsearch graylog
+```
+
+Antes de iniciarmos a aplicação, devemos iniciar a stack de logs e para isso devemos seguir alguns pequenos passos. Depois que o o mongo e o GrayLog são iniciados, devemos pegar duas informações para que o FileBeat consiga capturar os logs e enviar ao node do Elastic, token de acesso e id do node.
+
+* Para pegar o token acesse: ```http://localhost:9000/system/authentication/users``` e acesse ```More Actions -> Edit Tokens```
+* Para pegar o ID do node acesse ```http://localhost:9000/system/nodes```, ele é compõe o nome do node.
+
+Com essas informações na mão, agora podemos configurar o FileBeat para capturar os logs da applicação automaticamente.
 
 
-# Regras de negócio
+# Como utilizar API
 
-O usuário submete o seu email e o texto do comentário e o ID da pagina. Seu comentário fica então listado em ordem decrescente pela data da postagem, junto com os 20 últimos que foram feitos nesta página. Deve ser possível via API o usuário paginar pelos demais, sem limitação de quantidade.
+Para acessar a API basta acessar a URL local para as rotas abaixo:
 
-Como os comentários ficam nas páginas de matérias, é esperada grande quantidade de acessos às mesmas e um volume alto de submissões de comentários concentrados em um curto espaço de tempo, principalmente em eventos como Eleições, Copa do Mundo, etc. Esperamos ter um teste que cubra esse cenário e, por razões práticas, podemos considerar 1000 comentários/seg e 200 usuários simultâneos acessando a matéria como baseline de performance.
+## Get list all page
 
-Devemos permitir que os usuários acessem uma rota da API com a listagem das matérias e o número de comentários que cada uma tem. A partir da lista é possível consultar outra rota com a matéria. Esta URL precisa estar documentada em algum lugar do seu projeto.
+Listar tweets por #Tags 
+
+Local:
+
+```bash
+curl -X GET \
+  http://localhost:8080/api/tweets/:<HashTag> 
+```
+
+##Post new page##
+
+Para adicinar uma nova página:
+
+Local:
+
+```bash
+curl -X POST \
+  http://localhost:8080/api/pages \
+  -d '{
+	"PageId": Number,
+	"Title": String
+}'
+```
+
+Cloud:
+```bash
+curl -X POST \
+  http://apiglobocom-env.us-east-1.elasticbeanstalk.com/api/pages \
+  -d '{
+	"PageId": Number,
+	"Title": String
+}'
+```
+
+##Get list comment by page id##
+
+Para listar os comentários, basta clicar na URL de cada página, automaticamente será direcionado para API de comentários da página/matéria, ou se preferir, pode chamar diretamente passando o id da página.
+
+Local:
+
+```bash
+curl -X GET \
+  http://localhost:8080/api/pages/:id/comments 
+```
+
+Cloud:
+```bash
+curl -X GET \
+  http://apiglobocom-env.us-east-1.elasticbeanstalk.com/api/pages/:id/comments
+```
+
+##Post new comment by page id##
+
+Para efetuar um POST na página/matéria, basta segir os comandos abaixo enviando os siguintes parametros no header.
+
+Local:
+
+```bash
+curl -X POST \
+  http://localhost:8080/api/pages/:id/comment \
+  -d '{
+ "PageId": Number, 
+ "UserMail": String, 
+ "CommentUser": String
+}'
+```
+
+Cloud:
+```bash
+curl -X POST \
+  http://apiglobocom-env.us-east-1.elasticbeanstalk.com/api/pages/:id/comment \
+    -d '{
+ "PageId": Number, 
+ "UserMail": String, 
+ "CommentUser": String
+}'
+```
 
 
-# O que será avaliado na sua solução?
 
-Seu código será observado por uma equipe de desenvolvedores que avaliarão a implementação do código, simplicidade e clareza da solução, a arquitetura, estilo de código, testes unitários, testes funcionais, nível de automação dos testes e a documentação.
-
-Sua solução será submetida a uma bateria de testes de performance para garantir que atende a demanda de uma chamada em TV ou a picos de audiência provenientes de acontecimentos de amplo alcance. Fique atento à performance e escalabilidade.
-
-A automação da infra-estrutura também é importante. Imagine que você precisará fazer deploy do seu código em múltiplos servidores, então não é interessante ter que ficar entrando máquina por máquina para fazer o deploy da aplicação.
-
-# Dicas
-
-Use ferramentas e bibliotecas open source, mas documente as decisões e porquês;
-
-Automatize o máximo possível;
-
-Em caso de dúvidas, pergunte.
