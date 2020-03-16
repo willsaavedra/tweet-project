@@ -1,111 +1,22 @@
-# Preparando ambiente
+# Logging Tweet API REST
 
-**Para rodar o ambiente é necessario alguns pré-requisitos:**
+Objetivo deste case é mostrar a aplicabiliade do monitoramento em tempo real nas aplicações do dia. Dentro do lab vamos subir um app API que vai fazer consulta aos tweets por uma determinada #, salva e gera relatorios com os tweets salvados. Junto com o app, o lab tambem sobe uma stack de logging para o monitoramento em tempo real, para analisarmos o comportamento da aplicação.
 
-* NodeJS - LTS
-  * https://nodejs.org/en/
-* npm 6.14.2
-  * https://www.npmjs.com/get-npm
-* Docker
-* Docker-compose
+## Arquitetura
 
-* Para instalação local, certifique-se que as portas abaixo estajem liberadas:
+**Microserviço Tweet-API**
 
-* 8081 - tweet-api
-* 27017 - MongoDB
-* 9200, 92300 - ElasticSearch
-* 9000, 1514, 12201 - GrayLog
+Aplicação desenvolvida em nodeJS com integração as APIs do Twitter, consultando e salvando os tweets selecionados.
 
-# Iniciando o ambiente 
+**Logging GrayLog**
 
-**Clonando repositorio**
+GrayLog vem para centralizar os logs, analisar e gerar novos dados para gerar uma visualização do comportamento da aplicação monitorada. Esses logs são capturados pelo agent FIleBeat do Elastic, que pos sua vez é reponsavel por coletar os logs expostos pelos microserviços e enviar para o node do elastic.
 
-```bash
-git clone https://github.com/willsaavedra/tweet-project.git
-```
+**MongoDB** 
 
-**Iniciando serviços via docker-compose**
+MongoDB é tuilizado como repositorio de dados para a aplicação Tweet-API e pelo backend do GrayLog.
 
-```bash
-# Diretorio Git
-cd ./tweet-project
+**Diagrama**
 
-# docker compose up mongoDB, Elastic and GrayLog
-docker-compose up -d mongo elasticsearch graylog
-```
+![Diagrama](https://user-images.githubusercontent.com/41700932/76788705-34ff6a00-679a-11ea-8cbc-02f537fe0b4e.jpg)
 
-Antes de iniciarmos a aplicação, devemos iniciar a stack de logs e para isso devemos seguir alguns pequenos passos. Depois que o o mongo e o GrayLog são iniciados, devemos pegar duas informações para que o FileBeat consiga capturar os logs e enviar ao node do Elastic, token de acesso e id do node.
-
-* Para pegar o token acesse: ```http://localhost:9000/system/authentication/users``` e acesse ```More Actions -> Edit Tokens```, crie um novo token para ser utilizado e exporta a env ```GS_SERVER_API_TOKEN``` para que o docker-compose possa encontrar, conforme abaixo:
-
-```
-export GS_SERVER_API_TOKEN=<TOKEN>
-```
-* Para pegar o ID do node acesse ```http://localhost:9000/system/nodes```, ele compõe o nome do node. exporta o id na env ```GS_NODE_ID```, conforme abaixo:
-
-
-```
-export GS_NODE_ID=<ID_NODE>
-```
-
-Com essas informações na mão e configuradas, agora podemos iniciar o FileBeat para capturar os logs da aplicação automaticamente.
-
-```bash
-# iniciando FileBeat
-docker-compose up -d gssidecar
-```
-
-
-# Como utilizar API
-
-Para acessar a API basta acessar a URL local para as rotas abaixo:
-
-**Listar tweets por #:**
-
-Local:
-
-```bash
-curl -X GET \
-  http://localhost:8081/api/tweets/:<HashTag> 
-```
-
-**Salvar um array de #**
-
-Local:
-
-```bash
-curl -X POST \
-  http://localhost:8081/api/tweets \
-  -d '[
-	"openbanking",
-	"apifirst", 
-	"devops",
-	"cloudfirst", 
-	"microservices",
-	"apigateway",
-	"oauth", 
-	"swagger", 
-	"raml", 
-	"openapis"
-]'
-```
-
-**Consultando reports #**
-
-Quantidade de tweets por dia e hora:
-
-```bash
-curl -X GET \
-  http://localhost:8081/api/tweets/report/day
-```
-
-Top 5 users com mais seguidores:
-```bash
-curl -X GET \
-  http://localhost:8081/api/tweets/report/topusers
-```
-Tweets agrupados por #, lingua e região:
-```bash
-curl -X GET \
-  http://localhost:8081/api/tweets/report/region
-```

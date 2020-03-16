@@ -91,5 +91,6 @@ Dentre elas são:
 
 * Integrar os Routes da API com o Controller
 * Criar testes unitários
+* Documentação mais detalhada
 
 Gostaria de agradecer a oportunidade de atuar neste desafio, mais um aprendizado em pensar sobre como desenvolver, contribuindo com estudo e aprendizado da minha carreira.
