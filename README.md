@@ -11,6 +11,7 @@
 
 * Para instalação local, certifique-se que as portas abaixo estajem liberadas:
 
+* 8081 - tweet-api
 * 27017 - MongoDB
 * 9200, 92300 - ElasticSearch
 * 9000, 1514, 12201 - GrayLog

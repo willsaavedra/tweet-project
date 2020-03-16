@@ -3,11 +3,13 @@ const router = express.Router();
 const SaveTweetsRepository = require('../../repository/tweets');
 var Twitter = require('twitter');
 var client = new Twitter({
-  consumer_key: 'bABFAhZIn065zApAAOQXzKkCV',
-  consumer_secret: 'gQKdByOS5a8K15MJX2xwI4NFsqP6rrxaNU6EZkB0jfdXRdeykJ',
-  access_token_key: '362833614-LLGxAhx8badCCtwSrrld21cpVN5nEG0UfM7vlcwM',
-  access_token_secret: 'v5XUfML1HnLOaFwh1OdxK6rvBBgy8WUpCXsEvK140kSUj'
+  consumer_key: process.env.TWITTER_CONSUMER_KEY,
+  consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
+  access_token_key: process.env.TWITTER_ACCESS_TOKEN_KEY,
+  access_token_secret: process.env.TWITTER_ACCESS_TOKEN_KEY
 });
+
+console.log(client)
 
 // all tweets per #
 router.get('/:word', async (req, res, next) => {
