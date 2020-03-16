@@ -36,32 +36,16 @@ docker-compose up -d mongo elasticsearch graylog
 
 Antes de iniciarmos a aplicação, devemos iniciar a stack de logs e para isso devemos seguir alguns pequenos passos. Depois que o o mongo e o GrayLog são iniciados, devemos pegar duas informações para que o FileBeat consiga capturar os logs e enviar ao node do Elastic, token de acesso e id do node.
 
-* Para pegar o token acesse: ```http://localhost:9000/system/authentication/users``` e acesse ```More Actions -> Edit Tokens```, crie um novo token para ser utilizado e coloque na env ```GS_SERVER_API_TOKEN``` no docker-compose, conforme abaixo:
+* Para pegar o token acesse: ```http://localhost:9000/system/authentication/users``` e acesse ```More Actions -> Edit Tokens```, crie um novo token para ser utilizado e exporta a env ```GS_SERVER_API_TOKEN``` para que o docker-compose possa encontrar, conforme abaixo:
 
 ```
-gssidecar:
-    image: markusgulden/graylog2-sidecar-docker
-    environment:
-      - GS_SERVER_URL=http://graylog:9000/api/
-      - GS_NODE_ID=<ID_NODE>
-      - GS_TAGS=['tweet']
-      - GS_LIST_LOG_FILES=['/var/log/']
-      - GS_TLS_SKIP_VERIFY=true
-      - GS_SERVER_API_TOKEN=<TOKEN_GRAYLOG_API> <- colocar o token aqui
+export GS_SERVER_API_TOKEN=<TOKEN>
 ```
-* Para pegar o ID do node acesse ```http://localhost:9000/system/nodes```, ele compõe o nome do node. Coloque o id na env GS_NODE_ID, conforme abaixo:
+* Para pegar o ID do node acesse ```http://localhost:9000/system/nodes```, ele compõe o nome do node. exporta o id na env ```GS_NODE_ID```, conforme abaixo:
 
 
 ```
-gssidecar:
-    image: markusgulden/graylog2-sidecar-docker
-    environment:
-      - GS_SERVER_URL=http://graylog:9000/api/
-      - GS_NODE_ID=<ID_NODE> <- colocar o id do node aqui
-      - GS_TAGS=['tweet']
-      - GS_LIST_LOG_FILES=['/var/log/']
-      - GS_TLS_SKIP_VERIFY=true
-      - GS_SERVER_API_TOKEN=<TOKEN_GRAYLOG_API> 
+export GS_NODE_ID=<ID_NODE>
 ```
 
 Com essas informações na mão e configuradas, agora podemos iniciar o FileBeat para capturar os logs da aplicação automaticamente.
