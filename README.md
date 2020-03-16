@@ -1,6 +1,6 @@
 # Logging Tweet API REST
 
-Objetivo deste case é mostrar a aplicabiliade do monitoramento em tempo real nas aplicações do dia. Dentro do lab vamos subir um app API que vai fazer consulta aos tweets por uma determinada #, salva e gera relatorios com os tweets salvados. Junto com o app, o lab tambem sobe uma stack de logging para o monitoramento em tempo real, para analisarmos o comportamento da aplicação.
+Objetivo deste case é mostrar a aplicabilidade do monitoramento em tempo real nas aplicações do dia. Dentro do lab vamos subir um app API que vai fazer consulta aos tweets por uma determinada #, salva e gera relatorios com os tweets salvados. Junto com o app, o lab também sobe uma stack de logging para o monitoramento em tempo real, para analisarmos o comportamento da aplicação.
 
 Mais informações: 
 
@@ -15,11 +15,11 @@ Aplicação desenvolvida em nodeJS com integração as APIs do Twitter, consulta
 
 **Logging GrayLog**
 
-GrayLog vem para centralizar os logs, analisar e gerar novos dados para gerar uma visualização do comportamento da aplicação monitorada. Esses logs são capturados pelo agent FIleBeat do Elastic, que pos sua vez é reponsavel por coletar os logs expostos pelos microserviços e enviar para o node do elastic.
+GrayLog vem para centralizar os logs, analisar e gerar novos dados para gerar uma visualização do comportamento da aplicação monitorada. Esses logs são capturados pelo agent FIleBeat do Elastic, que pos sua vez é reponsável por coletar os logs expostos pelos microserviços e enviar para o node do elastic.
 
 **MongoDB** 
 
-MongoDB é tuilizado como repositorio de dados para a aplicação Tweet-API e pelo backend do GrayLog.
+MongoDB é utilizado como repositório de dados para a aplicação Tweet-API e pelo backend do GrayLog.
 
 **APM**
 
@@ -33,8 +33,8 @@ A aplicação já tem uma integração basico com o NewRelic APM, basta configur
 
 O Dashboard para acompanhar algumas métricas de execução: - (item 9 e 8)
 
-* Quantidade de menssagens analisadas
-* Timeline de menssagens
+* Quantidade de mensagens analisadas
+* Timeline de mensagens
 * Gráfico de request por StatusCode
 * Tabela de request por url
 * Count Method
@@ -48,6 +48,6 @@ O Dashboard para acompanhar algumas métricas de execução: - (item 9 e 8)
 
 ## APM 
 
-NewRelic para analise das requests mais aprofundadas: (item 9)
+NewRelic para análise das requests mais aprofundadas: (item 9)
 
 <img width="1424" alt="Captura de Tela 2020-03-16 às 16 08 53" src="https://user-images.githubusercontent.com/41700932/76791845-7b57c780-67a0-11ea-8fa1-aa452dfcc248.png">

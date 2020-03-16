@@ -9,7 +9,7 @@
 * Docker
 * Docker-compose
 
-* Para instalação local, certifique-se que as portas abaixo estajem liberadas:
+* Para instalação local, certifique-se que as portas abaixo estajam liberadas:
 
 * 8081 - tweet-api
 * 27017 - MongoDB
@@ -26,7 +26,7 @@ git clone https://github.com/willsaavedra/tweet-project.git
 
 **Configurando env**
 
-Antes de iniciar o ambiente é necessario exportar algumas variaveis para utilizar na construção do ambiente, segue abaixo as envs:
+Antes de iniciar o ambiente é necessário exportar algumas variáveis para utilizar na construção do ambiente, segue abaixo as envs:
 
 ```bash
 export NEW_RELIC_LICENSE_KEY=
@@ -39,7 +39,7 @@ export TWITTER_ACCESS_TOKEN_SECRET=
 **Iniciando serviços de logging**
 
 ```bash
-# Diretorio Git
+# Diretório Git
 cd ./tweet-project
 
 # docker compose up mongoDB, Elastic and GrayLog
