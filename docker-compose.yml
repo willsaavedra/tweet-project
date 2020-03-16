@@ -6,11 +6,11 @@ services:
     build: ./
     environment:
       - APP_NAME=tweet-api:dev
-      - NEW_RELIC_LICENSE_KEY=<NEW_RELIC_LICENSE_KEY>
-      - TWITTER_CONSUMER_KEY=<TWITTER_CONSUMER_KEY>
-      - TWITTER_CONSUMER_SECRET=<TWITTER_CONSUMER_SECRET>
-      - TWITTER_ACCESS_TOKEN_KEY=<TWITTER_ACCESS_TOKEN_KEY>
-      - TWITTER_ACCESS_TOKEN_KEY=<TWITTER_ACCESS_TOKEN_KEY>
+      - NEW_RELIC_LICENSE_KEY=${NEW_RELIC_LICENSE_KEY}
+      - TWITTER_CONSUMER_KEY=${TWITTER_CONSUMER_KEY}
+      - TWITTER_CONSUMER_SECRET=${TWITTER_CONSUMER_SECRET}
+      - TWITTER_ACCESS_TOKEN_KEY=${TWITTER_ACCESS_TOKEN_KEY}
+      - TWITTER_ACCESS_TOKEN_SECRET=${TWITTER_ACCESS_TOKEN_SECRET}
     restart: unless-stopped
     volumes:
       - ./src/var/log:/app/src/var/log/
@@ -54,11 +54,11 @@ services:
     image: markusgulden/graylog2-sidecar-docker
     environment:
       - GS_SERVER_URL=http://graylog:9000/api/
-      - GS_NODE_ID=<GS_NODE_ID>
+      - GS_NODE_ID=${GS_NODE_ID}
       - GS_TAGS=['tweet']
       - GS_LIST_LOG_FILES=['/var/log/']
       - GS_TLS_SKIP_VERIFY=true
-      - GS_SERVER_API_TOKEN=<GS_SERVER_API_TOKEN>
+      - GS_SERVER_API_TOKEN=${GS_SERVER_API_TOKEN}
     volumes:
       - ./src/var/log:/var/log/
       - ./src/var/log:/var/lib/graylog-sidecar/collectors/filebeat/log

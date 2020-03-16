@@ -6,10 +6,8 @@ var client = new Twitter({
   consumer_key: process.env.TWITTER_CONSUMER_KEY,
   consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
   access_token_key: process.env.TWITTER_ACCESS_TOKEN_KEY,
-  access_token_secret: process.env.TWITTER_ACCESS_TOKEN_KEY
+  access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
 });
-
-console.log(client)
 
 // all tweets per #
 router.get('/:word', async (req, res, next) => {
@@ -125,7 +123,7 @@ router.post('/', async (req, res, next) => {
     });
     res.status(200).send({
       data: {
-        status: `#${words} Saved successfully`
+        message: `#${words} Saved successfully`
       }
     });
   } catch (error) {

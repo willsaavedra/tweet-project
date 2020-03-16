@@ -82,7 +82,7 @@ Local:
 
 ```bash
 curl -X GET \
-  http://localhost:8080/api/tweets/:<HashTag> 
+  http://localhost:8081/api/tweets/:<HashTag> 
 ```
 
 **Salvar um array de #**
@@ -91,7 +91,7 @@ Local:
 
 ```bash
 curl -X POST \
-  http://localhost:8080/api/tweets \
+  http://localhost:8081/api/tweets \
   -d '[
 	"openbanking",
 	"apifirst", 
@@ -112,16 +112,16 @@ Quantidade de tweets por dia e hora:
 
 ```bash
 curl -X GET \
-  http://localhost:8080/api/tweets/report/day
+  http://localhost:8081/api/tweets/report/day
 ```
 
 Top 5 users com mais seguidores:
 ```bash
 curl -X GET \
-  http://localhost:8080/api/tweets/report/topusers
+  http://localhost:8081/api/tweets/report/topusers
 ```
 Tweets agrupados por #, lingua e região:
 ```bash
 curl -X GET \
-  http://localhost:8080/api/tweets/report/region
+  http://localhost:8081/api/tweets/report/region
 ```
