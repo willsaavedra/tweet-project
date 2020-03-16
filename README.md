@@ -1,6 +1,6 @@
 # Logging Tweet API REST
 
-Objetivo deste case é mostrar a aplicabilidade do monitoramento em tempo real nas aplicações do dia a dia. Dentro do lab vamos subir uma aplicação que irá realizar consultas aos tweets por uma determinada Hashtag e salvar o resultadoa para consultar relatorios com os tweets salvos. Junto com o app, o lab também sobe uma stack de log e monitoramento em tempo real, para analisarmos o comportamento da aplicação.
+Objetivo deste case é mostrar a aplicabilidade do monitoramento em tempo real nas aplicações do dia a dia. Dentro do lab vamos subir uma aplicação que irá realizar consultas aos tweets por uma determinada Hashtag e salvar o resultados para consultarmos os tweets salvos. Junto com o app, o lab também sobe uma stack de log e monitoramento em tempo real, para analisarmos o comportamento da aplicação.
 
 Mais informações: 
 
@@ -16,11 +16,11 @@ Aplicação desenvolvida em nodeJS com integração as APIs do Twitter, consulta
 
 **Logging GrayLog**
 
-GrayLog vem para centralizar os logs, analisar e gerar novos dados para gerar uma visualização do comportamento da aplicação monitorada. Esses logs são capturados pelo agent FIleBeat do Elastic, que pos sua vez é reponsável por coletar os logs expostos pelos microserviços e enviar para o node do elastic.
+GrayLog vem para centralizar e analisar logs gerando novos dados para gerar visualização do comportamento da aplicação. Esses logs são capturados pelo agent FIleBeat do Elastic, que por sua vez é reponsável por coletar os logs expostos pelos microserviços e enviar para o node do elastic.
 
 **MongoDB** 
 
-MongoDB é utilizado como repositório de dados para a aplicação Tweet-API e pelo backend do GrayLog.
+MongoDB é utilizado como Banco de dados para a aplicação Tweet-API e pelo backend do GrayLog.
 
 **APM**
 
@@ -52,3 +52,4 @@ O Dashboard para acompanhar algumas métricas de execução: - (item 9 e 8)
 NewRelic para análise das requests mais aprofundadas: (item 9)
 
 <img width="1424" alt="Captura de Tela 2020-03-16 às 16 08 53" src="https://user-images.githubusercontent.com/41700932/76791845-7b57c780-67a0-11ea-8fa1-aa452dfcc248.png">
+
