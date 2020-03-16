@@ -25,19 +25,19 @@ Stack utilizada para construção da API
 
   * NewRelic 
 
-  Para o monitoramento tentei seguir uma linha simples e fácil de ser implementada, o NewRelic foi uma solução de fácil acesso e um nível de setup fácil e trás boas informações da aplicação em diversas camadas.
+  Para o monitoramento tentei seguir uma linha simples e fácil de ser implementada, o NewRelic foi uma solução de fácil acesso com um nível de setup fácil que trás boas informações da aplicação em diversas camadas.
 
   * Elastic e GrayLog
 
-  Seguindo o mesmo raciocínio de implementar soluções se fácil acesso e de simples implementação, o GrayLog com Elastic se encaixou bem neste quesito. Com diversas documentações na internet e um setup fácil com docker, faz com que eu escolhesse para utilizar neste projeto.
+  Seguindo o mesmo raciocínio de implementar soluções de fácil acesso e de simples implementação, o GrayLog com Elastic se encaixou bem neste quesito. Com diversas documentações disponiveis e um setup fácil com docker, fez com que eu escolhesse para utilizar neste projeto.
 
 ## Definindo estrategia de implementação
 
   * Docker e Docker-compose
 
-  Todos os serviços irão rodar local via docker, para isso escolhi uma implementação utilizando o docker-compose para reunir todas as configurações necessárias garantindo que o launch das aplicações fossem o mais transparente possível e com o máximo de automação.
+  Todos os serviços irão rodar localmente via docker, para isso escolhi uma implementação utilizando o docker-compose para reunir todas as configurações necessárias garantindo que o launch das aplicações fossem o mais transparente possível e com o máximo de automação.
 
-**Segue um breve descritivo do processo:**
+**Segue um breve descritivo do processo de subida:**
 
   * Docker-compose
     * Serices
@@ -93,4 +93,4 @@ Dentre elas são:
 * Criar testes unitários
 * Documentação mais detalhada
 
-Gostaria de agradecer a oportunidade de atuar neste desafio, mais um aprendizado em pensar sobre como desenvolver, contribuindo com estudo e aprendizado da minha carreira.
+Gostaria de agradecer a oportunidade de atuar neste desafio, mais um aprendizado em pensar sobre como desenvolver e expor ideias, contribuindo com estudo e aprendizado da minha carreira.
