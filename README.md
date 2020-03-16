@@ -2,6 +2,11 @@
 
 Objetivo deste case é mostrar a aplicabiliade do monitoramento em tempo real nas aplicações do dia. Dentro do lab vamos subir um app API que vai fazer consulta aos tweets por uma determinada #, salva e gera relatorios com os tweets salvados. Junto com o app, o lab tambem sobe uma stack de logging para o monitoramento em tempo real, para analisarmos o comportamento da aplicação.
 
+Mais informações: 
+
+[Install](https://github.com/willsaavedra/tweet-project/blob/master/INSTALL.md)
+[Desenvolvimento técnico](https://github.com/willsaavedra/tweet-project/blob/master/COMMENTS.md)
+
 ## Arquitetura
 
 **Microserviço Tweet-API**
