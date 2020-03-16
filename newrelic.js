@@ -9,7 +9,7 @@ exports.config = {
   /**
    * Array of application names.
    */
-  app_name: ['tweet-api:dev'],
+  app_name: [process.env.APP_NAME],
   /**
    * Your New Relic license key.
    */

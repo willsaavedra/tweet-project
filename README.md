@@ -43,9 +43,7 @@ Com essas informações na mão, agora podemos configurar o FileBeat para captur
 
 Para acessar a API basta acessar a URL local para as rotas abaixo:
 
-## Get list all page
-
-Listar tweets por #Tags 
+##Listar tweets por #: 
 
 Local:
 
@@ -54,74 +52,43 @@ curl -X GET \
   http://localhost:8080/api/tweets/:<HashTag> 
 ```
 
-##Post new page##
-
-Para adicinar uma nova página:
+##Salvar um array de # ##
 
 Local:
 
 ```bash
 curl -X POST \
-  http://localhost:8080/api/pages \
-  -d '{
-	"PageId": Number,
-	"Title": String
-}'
+  http://localhost:8080/api/tweets \
+  -d '[
+	"openbanking",
+	"apifirst", 
+	"devops",
+	"cloudfirst", 
+	"microservices",
+	"apigateway",
+	"oauth", 
+	"swagger", 
+	"raml", 
+	"openapis"
+]'
 ```
 
-Cloud:
-```bash
-curl -X POST \
-  http://apiglobocom-env.us-east-1.elasticbeanstalk.com/api/pages \
-  -d '{
-	"PageId": Number,
-	"Title": String
-}'
-```
+##Consultando reports # ##
 
-##Get list comment by page id##
-
-Para listar os comentários, basta clicar na URL de cada página, automaticamente será direcionado para API de comentários da página/matéria, ou se preferir, pode chamar diretamente passando o id da página.
-
-Local:
+Quantidade de tweets por dia e hora:
 
 ```bash
 curl -X GET \
-  http://localhost:8080/api/pages/:id/comments 
+  http://localhost:8080/api/tweets/report/day
 ```
 
-Cloud:
+Top 5 users com mais seguidores:
 ```bash
 curl -X GET \
-  http://apiglobocom-env.us-east-1.elasticbeanstalk.com/api/pages/:id/comments
+  http://localhost:8080/api/tweets/report/topusers
 ```
-
-##Post new comment by page id##
-
-Para efetuar um POST na página/matéria, basta segir os comandos abaixo enviando os siguintes parametros no header.
-
-Local:
-
+Tweets agrupados por #, lingua e região:
 ```bash
-curl -X POST \
-  http://localhost:8080/api/pages/:id/comment \
-  -d '{
- "PageId": Number, 
- "UserMail": String, 
- "CommentUser": String
-}'
+curl -X GET \
+  http://localhost:8080/api/tweets/report/region
 ```
-
-Cloud:
-```bash
-curl -X POST \
-  http://apiglobocom-env.us-east-1.elasticbeanstalk.com/api/pages/:id/comment \
-    -d '{
- "PageId": Number, 
- "UserMail": String, 
- "CommentUser": String
-}'
-```
-
-
-
