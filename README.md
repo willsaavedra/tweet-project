@@ -16,7 +16,15 @@ GrayLog vem para centralizar os logs, analisar e gerar novos dados para gerar um
 
 MongoDB é tuilizado como repositorio de dados para a aplicação Tweet-API e pelo backend do GrayLog.
 
+**APM**
+
+A aplicação já tem uma integração basico com o NewRelic APM, basta configurar a sua license Key para enviar as métricas.
+
 **Diagrama**
 
-![Diagrama](https://user-images.githubusercontent.com/41700932/76788705-34ff6a00-679a-11ea-8cbc-02f537fe0b4e.jpg)
+![Diagrama](https://user-images.githubusercontent.com/41700932/76790208-2b2b3600-679d-11ea-8006-02dfcda1a088.jpg)
 
+## Monitoramento API
+
+
+<img width="1920" alt="Captura de Tela 2020-03-16 às 15 50 07" src="https://user-images.githubusercontent.com/41700932/76790637-fb306280-679d-11ea-9705-511ab2d2ca0d.png">
