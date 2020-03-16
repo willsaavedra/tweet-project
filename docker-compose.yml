@@ -6,11 +6,11 @@ services:
     build: ./
     environment:
       - APP_NAME=tweet-api:dev
-      - NEW_RELIC_LICENSE_KEY=6044c7173b704a4b1a43758e323137eb17c3NRAL
-      - TWITTER_CONSUMER_KEY=bABFAhZIn065zApAAOQXzKkCV
-      - TWITTER_CONSUMER_SECRET=gQKdByOS5a8K15MJX2xwI4NFsqP6rrxaNU6EZkB0jfdXRdeykJ
-      - TWITTER_ACCESS_TOKEN_KEY=362833614-LLGxAhx8badCCtwSrrld21cpVN5nEG0UfM7vlcwM
-      - TWITTER_ACCESS_TOKEN_KEY=v5XUfML1HnLOaFwh1OdxK6rvBBgy8WUpCXsEvK140kSUj
+      - NEW_RELIC_LICENSE_KEY=<NEW_RELIC_LICENSE_KEY>
+      - TWITTER_CONSUMER_KEY=<TWITTER_CONSUMER_KEY>
+      - TWITTER_CONSUMER_SECRET=<TWITTER_CONSUMER_SECRET>
+      - TWITTER_ACCESS_TOKEN_KEY=<TWITTER_ACCESS_TOKEN_KEY>
+      - TWITTER_ACCESS_TOKEN_KEY=<TWITTER_ACCESS_TOKEN_KEY>
     restart: unless-stopped
     volumes:
       - ./src/var/log:/app/src/var/log/
@@ -54,11 +54,11 @@ services:
     image: markusgulden/graylog2-sidecar-docker
     environment:
       - GS_SERVER_URL=http://graylog:9000/api/
-      - GS_NODE_ID=10f74138
+      - GS_NODE_ID=<GS_NODE_ID>
       - GS_TAGS=['tweet']
       - GS_LIST_LOG_FILES=['/var/log/']
       - GS_TLS_SKIP_VERIFY=true
-      - GS_SERVER_API_TOKEN=1cu59lgh604dfasthuhum2pmvd5naq2l0ls6ah234gmbj45j7v1d
+      - GS_SERVER_API_TOKEN=<GS_SERVER_API_TOKEN>
     volumes:
       - ./src/var/log:/var/log/
       - ./src/var/log:/var/lib/graylog-sidecar/collectors/filebeat/log

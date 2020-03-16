@@ -6,6 +6,8 @@
   * https://nodejs.org/en/
 * npm 6.14.2
   * https://www.npmjs.com/get-npm
+* Docker
+* Docker-compose
 
 * Para instalação local, certifique-se que as portas abaixo estajem liberadas:
 
@@ -44,11 +46,29 @@ gssidecar:
       - GS_TAGS=['tweet']
       - GS_LIST_LOG_FILES=['/var/log/']
       - GS_TLS_SKIP_VERIFY=true
-      - GS_SERVER_API_TOKEN=<TOKEN_GRAYLOG_API>
+      - GS_SERVER_API_TOKEN=<TOKEN_GRAYLOG_API> <- colocar o token aqui
 ```
-* Para pegar o ID do node acesse ```http://localhost:9000/system/nodes```, ele compõe o nome do node.
+* Para pegar o ID do node acesse ```http://localhost:9000/system/nodes```, ele compõe o nome do node. Coloque o id na env GS_NODE_ID, conforme abaixo:
 
-Com essas informações na mão, agora podemos configurar o FileBeat para capturar os logs da aplicação automaticamente.
+
+```
+gssidecar:
+    image: markusgulden/graylog2-sidecar-docker
+    environment:
+      - GS_SERVER_URL=http://graylog:9000/api/
+      - GS_NODE_ID=<ID_NODE> <- colocar o id do node aqui
+      - GS_TAGS=['tweet']
+      - GS_LIST_LOG_FILES=['/var/log/']
+      - GS_TLS_SKIP_VERIFY=true
+      - GS_SERVER_API_TOKEN=<TOKEN_GRAYLOG_API> 
+```
+
+Com essas informações na mão e configuradas, agora podemos iniciar o FileBeat para capturar os logs da aplicação automaticamente.
+
+```bash
+# iniciando FileBeat
+docker-compose up -d gssidecar
+```
 
 
 # Como utilizar API
