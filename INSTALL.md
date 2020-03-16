@@ -67,7 +67,7 @@ export GS_SERVER_API_TOKEN=<TOKEN>
 ```bash
 export GS_NODE_ID=<ID_NODE>
 ```
-## Iniciando FileBeat**
+## Iniciando FileBeat
 
 Com essas informações na mão e configuradas, agora podemos iniciar o FileBeat para capturar os logs da aplicação automaticamente.
 

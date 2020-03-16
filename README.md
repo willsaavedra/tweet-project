@@ -1,6 +1,6 @@
 # Logging Tweet API REST
 
-Objetivo deste case é mostrar a aplicabilidade do monitoramento em tempo real nas aplicações do dia. Dentro do lab vamos subir um app API que vai fazer consulta aos tweets por uma determinada #, salva e gera relatorios com os tweets salvados. Junto com o app, o lab também sobe uma stack de logging para o monitoramento em tempo real, para analisarmos o comportamento da aplicação.
+Objetivo deste case é mostrar a aplicabilidade do monitoramento em tempo real nas aplicações do dia a dia. Dentro do lab vamos subir uma aplicação que irá realizar consultas aos tweets por uma determinada Hashtag e salvar o resultadoa para consultar relatorios com os tweets salvos. Junto com o app, o lab também sobe uma stack de log e monitoramento em tempo real, para analisarmos o comportamento da aplicação.
 
 Mais informações: 
 
