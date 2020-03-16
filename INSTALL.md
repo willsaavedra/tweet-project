@@ -45,6 +45,12 @@ cd ./tweet-project
 # docker compose up mongoDB, Elastic and GrayLog
 docker-compose up -d mongo elasticsearch graylog
 ```
+
+Após subir o GrayLog devera estar disponivel no endereço: ```http://localhost:9000```:
+
+User: Admin
+Password: Admin
+
 **Configurando envs do FileBeat**
 
 Antes de iniciarmos a aplicação, devemos iniciar a stack de logs e para isso devemos seguir alguns pequenos passos. Depois que o o mongo e o GrayLog são iniciados, devemos pegar duas informações para que o FileBeat consiga capturar os logs e enviar ao node do Elastic, token de acesso e id do node.
@@ -68,7 +74,13 @@ Com essas informações na mão e configuradas, agora podemos iniciar o FileBeat
 # iniciando FileBeat
 docker-compose up -d gssidecar
 ```
+# Iniciando Tweet-api
 
+```bash
+# iniciando Tweet-Api
+docker-compose up -d tweer-api
+```
+URL: ```http://localhost:8081```
 
 # Como utilizar API
 
