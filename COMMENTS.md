@@ -8,6 +8,7 @@ Stack utilizada para construção da API
   * Docker
 * Monitoramento
   * New Relic
+  * Elastic
   * GrayLog
 
 ## Evolução do desafio
@@ -22,23 +23,37 @@ Stack utilizada para construção da API
 
   Definido a linguagem, pensei em como iria armazenar esses posts. Já com todo cenário em mente, vi que iria lidar com dados não estruturados. Durante a minha experiência com banco, armazenar tabelas com campos grandes em bancos relacionais sempre deram dor de cabeça na hora da manutenção e performance. Levando em consideração estes pontos, eu resolvi utilizar o MongoDB devido a sua fácil adoção e documentação.
 
+  * NewRelic 
+
+  Para o monitoramento tentei seguir uma linha simples e fácil de ser implementada, o NewRelic foi uma solução de fácil acesso e um nível de setup fácil e trás boas informações da aplicação em diversas camadas.
+
+  * Elastic e GrayLog
+
+  Seguindo o mesmo raciocínio de implementar soluções se fácil acesso e de simples implementação, o GrayLog com Elastic se encaixou bem neste quesito. Com diversas documentações na internet e um setup fácil com docker, faz com que eu escolhesse para utilizar neste projeto.
+
 ## Definindo estrategia de implementação
 
-  * Docker-compose
+  * Docker e Docker-compose
 
-  A escolha pelo GitLab foi dada pelo fato de possuir um CI bem robusto disponível, ganhando tempo na construção do desafio e utilizando imagens docker para facilitar na construção e agilizar os processos. Como CD irei utilizar o GitLab também, por um simples motivo. Não complicar o desafio e acabar tomando mais tempo e na hora da avaliação será mais fácil, mas utilizaria outras ferramentas com mais tempo. 
+  Todos os serviços irão rodar local via docker, para isso escolhi uma implementação utilizando o docker-compose para reunir todas as configurações necessárias garantindo que o launch das aplicações fossem o mais transparente possível e com o máximo de automação.
 
 **Segue uma breve descritivo do processo:**
 
-    * Docker Compose
+  * Docker-compose
+    * Serices
+      * tweet-api
+      * mongo
+      * Elastic
+      * graylog
+      * sidecar - FileBeat
 
 ## Repositório, Class e Functions
 
-Para ajudar na construção da API foi desenvolvida uma classe para auxiliar nas rotas.
+Para ajudar na construção da API foi desenvolvida uma classe para auxiliar nas rotas. Contendo as funções de consultas para o banco 
 
 **Diretório da classe**
 
-```./srv/repository/tweet.js```
+```./srv/repository/tweets.js```
 
 ## Diretório da Aplicação:
 

@@ -43,7 +43,7 @@ Com essas informações na mão, agora podemos configurar o FileBeat para captur
 
 Para acessar a API basta acessar a URL local para as rotas abaixo:
 
-##Listar tweets por #: 
+**Listar tweets por #:**
 
 Local:
 
@@ -52,7 +52,7 @@ curl -X GET \
   http://localhost:8080/api/tweets/:<HashTag> 
 ```
 
-##Salvar um array de # ##
+**Salvar um array de #**
 
 Local:
 
@@ -73,7 +73,7 @@ curl -X POST \
 ]'
 ```
 
-##Consultando reports # ##
+**Consultando reports #**
 
 Quantidade de tweets por dia e hora:
 
