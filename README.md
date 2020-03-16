@@ -2,7 +2,7 @@
 
 Objetivo deste case é mostrar a aplicabilidade do monitoramento em tempo real nas aplicações do dia a dia. Dentro do lab vamos subir uma aplicação que irá realizar consultas aos tweets por uma determinada Hashtag e salvar o resultados para consultarmos os tweets salvos. Junto com o app, o lab também sobe uma stack de log e monitoramento em tempo real, para analisarmos o comportamento da aplicação.
 
-Mais informações: 
+Tópicos: 
 
 [Install](https://github.com/willsaavedra/tweet-project/blob/master/INSTALL.md)
 
