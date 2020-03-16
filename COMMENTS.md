@@ -37,7 +37,7 @@ Stack utilizada para construção da API
 
   Todos os serviços irão rodar local via docker, para isso escolhi uma implementação utilizando o docker-compose para reunir todas as configurações necessárias garantindo que o launch das aplicações fossem o mais transparente possível e com o máximo de automação.
 
-**Segue uma breve descritivo do processo:**
+**Segue um breve descritivo do processo:**
 
   * Docker-compose
     * Serices

@@ -18,7 +18,7 @@
 **Clonando repositorio**
 
 ```bash
-git clone https://gitlab.cloud4erp.digital/SelecaoGlobocom/Willian-Costa.git
+git clone https://github.com/willsaavedra/tweet-project.git
 ```
 
 **Iniciando serviços via docker-compose**
