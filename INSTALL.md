@@ -36,7 +36,7 @@ export TWITTER_ACCESS_TOKEN_KEY=
 export TWITTER_ACCESS_TOKEN_SECRET=
 ```
 
-## Iniciando serviços de logging
+## Iniciando serviços de log e banco
 
 ```bash
 # Diretório Git
@@ -45,8 +45,9 @@ cd ./tweet-project
 # docker compose up mongoDB, Elastic and GrayLog
 docker-compose up -d mongo elasticsearch graylog
 ```
+MongoDB: ```mongodb://localhost:27017```
 
-Após subir o GrayLog devera estar disponivel no endereço: ```http://localhost:9000```:
+GrayLog URL: ```http://localhost:9000```:
 
 User: Admin
 Password: Admin
