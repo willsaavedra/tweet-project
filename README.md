@@ -26,5 +26,23 @@ A aplicação já tem uma integração basico com o NewRelic APM, basta configur
 
 ## Monitoramento API
 
+O Dashboard para acompanhar algumas métricas de execução: - (item 9 e 8)
+
+* Quantidade de menssagens analisadas
+* Timeline de menssagens
+* Gráfico de request por StatusCode
+* Tabela de request por url
+* Count Method
+* Avg ResponseTime
+* TimeLine Errors
+* Tabela de Erros encontrados
+* Tabela de Menssagens
 
 <img width="1920" alt="Captura de Tela 2020-03-16 às 15 50 07" src="https://user-images.githubusercontent.com/41700932/76790637-fb306280-679d-11ea-9705-511ab2d2ca0d.png">
+<img width="1920" alt="Captura de Tela 2020-03-16 às 16 02 33" src="https://user-images.githubusercontent.com/41700932/76791405-9970f800-679f-11ea-9450-9578f215edf7.png">
+
+## APM 
+
+NewRelic para analise das requests mais aprofundadas: (item 9)
+
+<img width="1424" alt="Captura de Tela 2020-03-16 às 16 08 53" src="https://user-images.githubusercontent.com/41700932/76791845-7b57c780-67a0-11ea-8fa1-aa452dfcc248.png">
