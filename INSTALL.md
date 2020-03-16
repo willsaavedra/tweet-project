@@ -24,7 +24,7 @@
 git clone https://github.com/willsaavedra/tweet-project.git
 ```
 
-**Iniciando serviços via docker-compose**
+**Configurando env**
 
 Antes de iniciar o ambiente é necessario exportar algumas variaveis para utilizar na construção do ambiente, segue abaixo as envs:
 
@@ -36,6 +36,8 @@ export TWITTER_ACCESS_TOKEN_KEY=
 export TWITTER_ACCESS_TOKEN_SECRET=
 ```
 
+**Iniciando serviços de logging**
+
 ```bash
 # Diretorio Git
 cd ./tweet-project
@@ -43,6 +45,7 @@ cd ./tweet-project
 # docker compose up mongoDB, Elastic and GrayLog
 docker-compose up -d mongo elasticsearch graylog
 ```
+**Configurando envs do FileBeat**
 
 Antes de iniciarmos a aplicação, devemos iniciar a stack de logs e para isso devemos seguir alguns pequenos passos. Depois que o o mongo e o GrayLog são iniciados, devemos pegar duas informações para que o FileBeat consiga capturar os logs e enviar ao node do Elastic, token de acesso e id do node.
 
@@ -57,6 +60,7 @@ export GS_SERVER_API_TOKEN=<TOKEN>
 ```bash
 export GS_NODE_ID=<ID_NODE>
 ```
+**Iniciando FileBeat**
 
 Com essas informações na mão e configuradas, agora podemos iniciar o FileBeat para capturar os logs da aplicação automaticamente.
 
